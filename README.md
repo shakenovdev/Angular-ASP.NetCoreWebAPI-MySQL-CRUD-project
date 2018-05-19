@@ -36,7 +36,7 @@ This repository contains Web App built on Angular 5 that interacts with WebAPI w
 
 ### Edit WebAPI config
 
-[appsettings.json](WebApi/appsettings.json)
+Settings are located in [appsettings.json](WebApi/appsettings.json). Change `insert_here` to your own keys.
  
 - ConnectionString
 - JWT SecretKey
@@ -67,40 +67,40 @@ Online API documentation is located on [/Swagger](http://ideashareapp.azurewebsi
 
 ### Page navigation
 
-- Home
-    - Home ../
+- **Home**
+    - **Home** ../
         - article list with infinite scrolling
         - the most popular tags
         - user leaderboard
-    - Dependencies ../dependencies
+    - **Dependencies** ../dependencies
         - static page
         - information about used frameworks and third party libraries
-    - Contacts ../contacts
+    - **Contacts** ../contacts
         - static page
-- Auth
-    - SignIn ../auth/signin
+- **Auth**
+    - **SignIn** ../auth/signin
         - store JWT token in localStorage
-    - SignUp (/auth/signup)
+    - **SignUp** (/auth/signup)
         - Email verification
-- Idea
-    - Add new ../idea/new
+- **Idea**
+    - **Add new** ../idea/new
         - Auth guard (redirects if user is not logged)
         - edit list of tags
         - article editor WYSIWYG
-    - Details ../idea/:id
+    - **Details** ../idea/:id
         - like/dislike button
         - raw html render
         - favorite button
         - edit/restore button
         - comments section
-    - Search ../idea/search/:value
+    - **Search** ../idea/search/:value
         - search by value in title and article
-- Profile
-    - User info ../profile/:username
+- **Profile**
+    - **User info** ../profile/:username
         - information about user
         - list of favorited articles
         - list of created articles
-    - Settings ../settings
+    - **Settings** ../settings
         - edit avatar
         - change username
 
