@@ -18,7 +18,7 @@ This repository contains Web App built on Angular 5 that interacts with WebAPI w
 6. [Authors](#authors)
 7. [License](#license)
 
-## [Demo](http://ideashareapp.azurewebsites.net)
+## [Demo](http://ideashareapp.azurewebsites.net){:target="_blank"}
 
 - SignUp email verification is limited to 100 emails per day due to free plan.
 - Image uploading is restricted up to 500 KB
@@ -38,7 +38,7 @@ This repository contains Web App built on Angular 5 that interacts with WebAPI w
 
 - ConnectionString
 - JWT SecretKey
-- Email/SendGridAPIKey [how to create SendGrid?](https://docs.microsoft.com/en-us/azure/sendgrid-dotnet-how-to-send-email)
+- Email/SendGridAPIKey [how to create SendGrid?](https://docs.microsoft.com/en-us/azure/sendgrid-dotnet-how-to-send-email){:target="_blank"}
 
 ### Code-first database migration
 
@@ -61,44 +61,44 @@ Run `ASPNETCORE_Environment=Development dotnet run` to build project.
 
 ### WebAPI documentation
 
-Online API documentation is located on [/Swagger](http://ideashareapp.azurewebsites.net/swagger/)
+Online API documentation is located on [/Swagger](http://ideashareapp.azurewebsites.net/swagger/){:target="_blank"}
 
 ### Page navigation
 
 - Home
-    - Home (/)
+    - Home ../
         - article list with infinite scrolling
         - the most popular tags
         - user leaderboard
-    - Dependencies (/dependencies)
+    - Dependencies ../dependencies
         - static page
         - information about used frameworks and third party libraries
-    - Contacts (/contacts)
+    - Contacts ../contacts
         - static page
 - Auth
-    - SignIn (/auth/signin)
+    - SignIn ../auth/signin
         - store JWT token in localStorage
     - SignUp (/auth/signup)
         - Email verification
 - Idea
-    - Add new (/idea/new)
+    - Add new ../idea/new
         - Auth guard (redirects if user is not logged)
         - edit list of tags
         - article editor WYSIWYG
-    - Details (/idea/:id)
+    - Details ../idea/:id
         - like/dislike button
         - raw html render
         - favorite button
         - edit/restore button
         - comments section
-    - Search (/idea/search/:value)
+    - Search ../idea/search/:value
         - search by value in title and article
 - Profile
-    - User info (/profile/:username)
+    - User info ../profile/:username
         - information about user
         - list of favorited articles
         - list of created articles
-    - Settings (/settings)
+    - Settings ../settings
         - edit avatar
         - change username
 
@@ -121,4 +121,4 @@ Online API documentation is located on [/Swagger](http://ideashareapp.azurewebsi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
