@@ -1,0 +1,40 @@
+<div class="container mt-3 mb-3">
+  <div class="row">
+    <div class="col">
+      <form class="form" novalidate [formGroup]="newIdeaForm" (submit)="create()">
+        <!-- TITLE -->
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text bg-warning">Your idea:</span>
+            </div>
+            <input type="text" class="form-control" id="title" formControlName="title" placeholder="Theory of relativity">
+          </div>
+          <div ngxErrors="title">
+            <span ngxError="required" when="touched" class="badge badge-danger">
+              Title is required
+            </span>
+            <span ngxError="minlength" when="dirty" class="badge badge-danger">
+              Min length is 10
+            </span>
+          </div>
+        </div>
+
+        <!-- TAGS -->
+        <div class="form-group">
+            <tag-input formControlName="tags" [maxItems]='5' [modelAsStrings]='true' theme='minimal'></tag-input>
+        </div>
+        
+        <!-- TEXT EDITOR -->
+        <div class="form-group">
+          <textarea [froalaEditor]='options' formControlName="article"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success float-right" [disabled]="newIdeaForm.invalid">
+          <fa *ngIf="loading" name="spinner" animation="spin" size="lg" class="mr-2"></fa>Share idea
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+

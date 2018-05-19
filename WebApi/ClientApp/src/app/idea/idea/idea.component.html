@@ -1,0 +1,51 @@
+<div id="article" class="mb-4 border-0 rounded bg-light" [class.text-muted]="idea.isDeleted">
+  <div class="row">
+    <div class="col">
+      <h2 class="m-0">{{idea.title}}</h2>
+    </div>
+    <div class="col-auto">
+      <div class="float-right">
+        <fa name="arrow-up" size="lg" class="icon-button" [ngClass]="idea.currentUserLike === 1 ? 'text-success' : ''" (click)="like(true)"></fa>
+        <span [ngClass]="idea.likeCount < 0 ? 'text-danger' : 'text-success'">{{idea.likeCount}}</span>
+        <fa name="arrow-down" size="lg" class="icon-button" [ngClass]="idea.currentUserLike === -1 ? 'text-danger' : ''" (click)="like(false)"></fa>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span *ngFor="let tag of idea.tags" class="badge badge-gray mr-2">{{tag.name}}</span>
+    </div>
+  </div>
+  <div class="row pt-1">
+    <div class="col">
+      <a [routerLink]="['/profile', idea.creator.name]" style="text-decoration: none">
+        <img [src]="idea.creator.avatarURL" class="avatar-small" alt="{{idea.creator.name}}'s avatar'">
+        <span>{{idea.creator.name}}</span>
+      </a>
+      <span class="text-muted"> shared idea <date [date]="idea.createdDate"></date></span>
+    </div>
+    <div class="col-auto text-muted">
+      <fa name="eye" size="lg"></fa>
+      <span>{{idea.viewCount}}</span>
+    </div>
+  </div>
+  <div class="row mt-1 mb-1">
+    <article class="col" [froalaView]="idea.article"></article>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="float-right">
+        <button type="button" class="btn btn-small btn-danger" *ngIf="!idea.isDeleted && currentUser?.id == idea.creator.id" (click)="removeOrRestore()">
+          <fa *ngIf="removeLoading" name="spinner" animation="spin" size="lg"></fa>
+          <fa *ngIf="!removeLoading" name="trash" size="lg"></fa>
+          <span>remove</span>
+        </button>
+        <button type="button" class="btn btn-small btn-success" *ngIf="idea.isDeleted && currentUser?.id == idea.creator.id" (click)="removeOrRestore()">
+          <fa *ngIf="removeLoading" name="spinner" animation="spin" size="lg"></fa>
+          <fa *ngIf="!removeLoading" name="refresh" size="lg"></fa>
+          <span>restore</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

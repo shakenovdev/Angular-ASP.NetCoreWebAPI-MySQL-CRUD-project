@@ -1,0 +1,26 @@
+<div [class.text-muted]="comment.isDeleted">
+  <div class="row pt-1">
+    <div class="col">
+      <a [routerLink]="['/profile', comment.creator.name]" style="text-decoration: none">
+        <img [src]="comment.creator.avatarURL" class="avatar-small" alt="{{comment.creator.name}}'s avatar'">
+        <span>{{comment.creator.name}}</span>
+      </a>
+      <span *ngIf="comment.isOP" class="badge badge-success" placement="top" ngbTooltip="Original Poster">OP</span>
+      <span class="text-muted"> commented <date [date]="comment.createdDate"></date></span>
+    </div>
+    <div class="col-auto">
+      <div class="float-right">
+        <fa name="spinner" animation="spin" size="lg" *ngIf="removeLoading"></fa>
+        <fa name="trash" size="lg" class="text-danger icon-button" *ngIf="!removeLoading && !comment.isDeleted && currentUser?.id == comment.creator.id" (click)="removeOrRestore()"></fa>
+        <fa name="refresh" size="lg" class="text-success icon-button" *ngIf="!removeLoading && comment.isDeleted && currentUser?.id == comment.creator.id" (click)="removeOrRestore()"></fa>
+        <fa name="arrow-up" size="lg" class="icon-button" [ngClass]="comment.currentUserLike === 1 ? 'text-success' : ''" (click)="like(true)"></fa>
+        <span [ngClass]="comment.likeCount < 0 ? 'text-danger' : 'text-success'">{{comment.likeCount}}</span>
+        <fa name="arrow-down" size="lg" class="icon-button" [ngClass]="comment.currentUserLike === -1 ? 'text-danger' : ''" (click)="like(false)"></fa>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" [froalaView]="comment.message">
+    </div>
+  </div>
+</div>

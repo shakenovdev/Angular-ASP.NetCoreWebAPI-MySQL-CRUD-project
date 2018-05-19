@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row mt-3 mb-3">
+    <div class="col">
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="searchValue" (keyup.enter)="updateRoute()" placeholder="Search for idea...">
+        <button class="btn btn-warning" type="button" (click)="updateRoute()">
+          <fa *ngIf="goingSearch" name="spinner" animation="spin" size="lg"></fa>
+          <fa *ngIf="!goingSearch" name="search" size="lg"></fa>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div infiniteScroll [infiniteScrollDistance]="0.05" (scrolled)="search(true)">
+        <app-idea-preview *ngFor="let idea of ideas" [idea]="idea"></app-idea-preview>
+      </div>
+      <div class="text-center">
+        <span>
+          <fa *ngIf="loading" name="spinner" animation="spin" size="2x"></fa>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center" *ngIf="ideas.length==0">
+    <div class="col">
+      <img src="assets/broken.png" alt="broken light bulb">
+      <h2 class="mt-3">We don't have such ideas</h2>
+    </div>
+  </div>
+</div>

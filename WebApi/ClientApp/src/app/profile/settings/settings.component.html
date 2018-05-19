@@ -1,0 +1,28 @@
+<!--<fa name="spinner" animation="spin" size="lg"></fa>-->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-5 col-md-4 col-lg-3 mt-3">
+      <img [src]="currentUser.avatarURL" alt="test" class="img-thumbnail">
+      <div class="btn-group d-flex" role="group">
+        <label class="btn btn-success w-100 m-0">
+          Select <input #fileInput type="file" accept="image/jpeg, image/png" (change)="selectImage($event)" hidden>
+        </label>
+        <button class="btn btn-danger w-100" (click)="removeImage()">Remove</button>
+      </div>
+    </div>
+    <div class="col-sm-7 col-md-8 col-lg-6 mt-3">
+      <div class="form-group mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">UserName</span>
+          </div>
+          <input type="text" class="form-control" name="username" [(ngModel)]="currentUser.userName">
+        </div>
+        <small class="text-muted float-right">UserName must be unique!</small>
+      </div>
+      <button type="button" class="btn btn-warning w-50 float-right" (click)="update()">
+        <fa *ngIf="loading" name="spinner" animation="spin" size="lg" class="mr-2"></fa>Update
+      </button>
+    </div>
+  </div>
+</div>

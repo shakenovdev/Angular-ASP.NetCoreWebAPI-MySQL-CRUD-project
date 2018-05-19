@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row pt-2">
+    <div class="col-sm-10 col-md-6 mx-auto">
+      <div class="card border-warning mb-3">
+        <div class="card-header">
+          <h1 class="text-warning">Sign Up</h1>
+        </div>
+        <div class="card-body">
+          <form class="form" novalidate [formGroup]="signUpForm" (submit)="signUp()">
+            <div class="form-group">
+              <label for="name">Nickname</label>
+              <input type="text" class="form-control" id="name" formControlName="name">
+              <div ngxErrors="name">
+                <span ngxError="required" when="touched" class="badge badge-danger">
+                  Nickname is required
+                </span>
+                <span ngxError="minlength" when="dirty" class="badge badge-danger">
+                  Min length is 3
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+              <div ngxErrors="email">
+                <span ngxError="required" when="touched" class="badge badge-danger">
+                  Email is required
+                </span>
+                <span ngxError="email" when="dirty" class="badge badge-danger">
+                  Email is not correct
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+              <div ngxErrors="password">
+                <span ngxError="required" when="touched" class="badge badge-danger">
+                  Password is required
+                </span>
+                <span ngxError="minlength" when="dirty" class="badge badge-danger">
+                  Min length is 8
+                </span>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-block btn-warning" [disabled]="signUpForm.invalid">
+              <fa *ngIf="loading" name="spinner" animation="spin" size="lg" class="mr-2"></fa>Sign Up
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

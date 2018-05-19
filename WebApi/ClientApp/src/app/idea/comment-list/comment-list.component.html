@@ -1,0 +1,47 @@
+<!-- Comments section -->
+<div id="comments" class="row">
+  <div class="col">
+    <h3>Comments <span class="text-muted">{{comments?.length}}</span></h3>
+    <hr class="my-2">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div *ngIf="initialLoading" class="mb-2">
+      <fa name="spinner" animation="spin" size="lg"></fa>
+      <b>comments are loading...</b>
+    </div>
+    <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+  </div>
+</div>
+
+
+<!-- Add comment -->
+<div class="row">
+  <div class="col">
+    <h3>Add comment</h3>
+    <hr class="my-2">
+  </div>
+</div>
+<div class="row" *ngIf="isSigned">
+  <div class="col mb-3">
+    <form class="form" novalidate [formGroup]="newCommentForm" (submit)="create()">
+      <div class="form-group">
+        <div [froalaEditor]='options' formControlName="message" [(froalaModel)]="message"></div>
+      </div>
+      <button type="submit" class="btn btn-success float-right" [disabled]="newCommentForm.invalid">
+        <fa *ngIf="loading" name="spinner" animation="spin" size="lg" class="mr-2"></fa>Add comment
+      </button>
+    </form>
+  </div>
+</div>
+<div class="row" *ngIf="!isSigned">
+  <div class="col d-inline mb-3">
+    You have to 
+    <mark><a routerLink="/auth/signin">Sign In</a></mark>
+      or
+    <mark><a routerLink="/auth/signup">Sign Up</a></mark>
+      to comment ideas
+  </div>
+</div>
+

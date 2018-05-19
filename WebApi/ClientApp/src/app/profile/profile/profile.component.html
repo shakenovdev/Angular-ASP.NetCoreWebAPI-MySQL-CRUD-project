@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row m-4">
+    <div class="col-sm-4 col-md-3 col-lg-2">
+      <img [src]="profile.pictureUrl" class="img-thumbnail">
+    </div>
+    <div class="col-sm-8 col-md-9 col-lg-10">
+      <h4 class="card-title">{{profile.name}}</h4>
+      <ul class="list-unstyled">
+        <li><p class="card-text">Shared <b class="text-warning">{{profile.sharedCount}}</b> ideas with world</p></li>
+        <li>
+          <p class="card-text">Liked <b class="text-success">{{profile.likeCount}}</b> 
+          and Disliked <b class="text-danger">{{profile.dislikeCount}}</b></p>
+        </li>
+        <li>
+          <p class="card-text">
+            Rating: <b [ngClass]="profile.rating < 0 ? 'text-danger' : 'text-success'">{{profile.rating}}</b>
+          </p>
+        </li>
+        <li><p class="card-text">since <b class="text-muted">{{profile.registrationDate | amFromUtc | amLocal | amDateFormat: 'MMMM Do YYYY'}}</b></p></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <ngb-tabset>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Shared
+              <span class="badge badge-pill badge-primary">{{profile.sharedCount}}</span>
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="mt-2" infiniteScroll [infiniteScrollDistance]="0.05" (scrolled)="getList(0, true)">
+                <app-idea-preview *ngFor="let idea of ideas[0]" [idea]="idea"></app-idea-preview>
+              </div>
+              <div class="text-center">
+                <span>
+                  <fa *ngIf="loadings[0]" name="spinner" animation="spin" size="2x"></fa>
+                </span>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Favorited
+              <span class="badge badge-pill badge-primary">{{profile.favoritedCount}}</span>
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="mt-2" infiniteScroll [infiniteScrollDistance]="0.05" (scrolled)="getList(1, true)">
+                <app-idea-preview *ngFor="let idea of ideas[1]" [idea]="idea"></app-idea-preview>
+              </div>
+              <div class="text-center">
+                <span>
+                  <fa *ngIf="loadings[1]" name="spinner" animation="spin" size="2x"></fa>
+                </span>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+    </div>
+  </div>
+</div>

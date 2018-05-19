@@ -1,0 +1,26 @@
+.collapsable {
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.read-more {
+    cursor: pointer;
+    color: #f0ad4e !important;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.read-more:hover {
+    font-weight: 600;
+}
+
+.read-more::before {
+    content: '';
+    width: 100%;
+    height: 20px;
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAZCAMAAADHTrRNAAAASFBMVEX////////////////////////////////////////////////////////////////////////////////////////////////OfZ3oAAAAGHRSTlMD+fLr4tjOw7ern5OGeWxgVEg8MScdFA3Rp/sUAAAAKklEQVQI1wXBBQHAMAAAIO4u8/5NB6CpiiyJgt/n9bhdTofdZrWYTUZDByDmARWkmevqAAAAAElFTkSuQmCC);
+}

@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row">
+      <main class="col-lg-8 col-xl-9 mt-4">
+        <!-- margin mock -->
+        <div class="row mb-2">
+          <!-- Filters -->
+          <div class="col">
+            <h5 class="text-uppercase"> 
+              <span class="d-none d-sm-inline">show</span>
+              <select class="custom-select text-uppercase" type="number" [(ngModel)]="selectedFilterId" (ngModelChange)="getList()">
+                <option *ngFor="let filter of filterOptions" [ngValue]="filter.id">
+                  {{filter.name}}
+                </option>
+              </select>
+              <b *ngIf="selectedTag"> 
+                #{{selectedTag.name}} 
+                <fa name="times-circle" size="lg" class="text-danger" (click)="removeTag()"></fa>
+              </b>
+              <span class="d-none d-sm-inline">ideas</span>
+              <span>for</span>
+              <select class="custom-select text-uppercase" type="number" [(ngModel)]="selectedPeriodId" (ngModelChange)="getList()">
+                <option *ngFor="let period of periodOptions" [ngValue]="period.id">
+                  {{period.name}}
+                </option>
+              </select>
+            </h5>
+          </div>
+        </div>
+        
+        <!-- Ideas articles -->
+        <div infiniteScroll [infiniteScrollDistance]="0.05" (scrolled)="getList(true)">
+          <app-idea-preview *ngFor="let idea of currentIdeas" [idea]="idea" (tagChanged)="selectTag($event)"></app-idea-preview>
+        </div>
+        <div class="text-center">
+          <span>
+            <fa *ngIf="loadings.ideas" name="spinner" animation="spin" size="2x"></fa>
+          </span>
+        </div>
+      </main>
+
+      <!-- sidebar -->
+      <div class="col-lg-4 col-xl-3 d-none d-lg-block">
+        <div class="sticky-top pt-4">
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-block btn-warning" routerLink="/idea/new">
+                <fa name="plus-square" size="lg" class="mr-2"></fa>I have an idea!
+              </button>
+            </div>
+          </div>
+  
+          <!-- Search -->
+          <div class="row mt-3">
+            <div class="col">
+              <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="searchValue" (keyup.enter)="search()" placeholder="Search for idea...">
+                <button class="btn btn-warning" type="button" (click)="search()">
+                  <fa *ngIf="goingSearch" name="spinner" animation="spin" size="lg"></fa>
+                  <fa *ngIf="!goingSearch" name="search" size="lg"></fa>
+                </button>
+              </div>
+            </div>
+          </div>
+  
+            <!-- Tags -->
+            <div class="card my-4">
+              <h5 class="card-header">Popular Tags</h5>
+              <div class="card-body">
+                <a href="#" class="badge mr-2"
+                   *ngFor="let tag of popularTags" 
+                   [ngClass]="tag == selectedTag ? 'badge-warning' : 'badge-gray'" 
+                   (click)="selectTag(tag)">{{tag.name}}
+                </a>
+                <div class="text-center">
+                  <span>
+                    <fa *ngIf="loadings.tags" name="spinner" animation="spin" size="2x"></fa>
+                  </span>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Popular Users -->
+            <div class="card my-4">
+              <h5 class="card-header">Idea Leaders</h5>
+              <div class="card-body">
+                <ol class="pl-3">
+                  <li *ngFor="let user of popularUsers" class="mb-1">
+                    <a style="text-decoration: none" [routerLink]="['/profile', user.userName]">
+                      <img [src]="user.avatarURL" class="avatar-small" alt="{{user.userName}}'s avatar'">
+                      <span class="hover-underline-animation">{{user.userName}}</span>
+                      <span [ngClass]="user.rating < 0 ? 'text-danger' : 'text-success'">[{{user.rating}}]</span>
+                    </a>
+                  </li>
+                </ol>
+                <div class="text-center">
+                  <span>
+                    <fa *ngIf="loadings.users" name="spinner" animation="spin" size="2x"></fa>
+                  </span>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+      </div>
+  </div>
+</div>

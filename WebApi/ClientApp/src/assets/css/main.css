@@ -1,0 +1,70 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px !important;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}
+
+/* Hide froala license message to improve demo experience (not a commercial usage!)*/
+/*a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
+    display: none !important;
+    position: absolute;
+    top: -99999999px;
+}*/
+
+.badge-gray {
+    color: #1a1a1a;
+    background-color: #e9e7e7;
+}
+ 
+.badge-gray[href]:hover, .badge-gray[href]:focus {
+    color: #1a1a1a;
+    text-decoration: none;
+    background-color: #d4d3d3;
+}
+
+.avatar-small {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: cover;
+}
+
+.btn-small {
+    padding: 0.5rem 0.75rem !important;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    /*color: #0087ca;*/
+  }
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f0ad4e;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.icon-button {
+    cursor: pointer;
+}

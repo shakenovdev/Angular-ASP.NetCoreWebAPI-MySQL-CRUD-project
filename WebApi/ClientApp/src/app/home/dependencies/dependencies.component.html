@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div *ngFor="let technology of technologies">
+        <h2>{{technology.name}}</h2>
+        <ul>
+          <li *ngFor="let dependency of technology.dependencies">
+            <a target="_blank" [href]="dependency.url">{{dependency.name}}</a>
+            <span *ngIf="dependency.version">[{{dependency.version}}]</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
