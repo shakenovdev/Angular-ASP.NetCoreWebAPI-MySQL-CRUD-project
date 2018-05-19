@@ -6,7 +6,7 @@ This repository contains Web App built on Angular 5 that interacts with WebAPI w
 1. [Demo](#demo)
 2. [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Edit WebAPI config appsettings.json](#edit-webapi-config-appsettings.json)
+    - [Edit WebAPI config](#edit-webapi-config)
     - [Code-first database migration](#code-first-database-migration)
     - [Run project](#run-project)
 3. [Functionality Overview](#functionality-overview)
@@ -18,7 +18,7 @@ This repository contains Web App built on Angular 5 that interacts with WebAPI w
 6. [Authors](#authors)
 7. [License](#license)
 
-## [Demo](http://ideashareapp.azurewebsites.net){:target="_blank"}
+## [Demo](http://ideashareapp.azurewebsites.net)
 
 - SignUp email verification is limited to 100 emails per day due to free plan.
 - Image uploading is restricted up to 500 KB
@@ -34,11 +34,13 @@ This repository contains Web App built on Angular 5 that interacts with WebAPI w
 - Angular CLI
 - .NET Core Framework
 
-### Edit WebAPI config [appsettings.json](WebApi/appsettings.json)
+### Edit WebAPI config
 
+[appsettings.json](WebApi/appsettings.json)
+ 
 - ConnectionString
 - JWT SecretKey
-- Email/SendGridAPIKey [how to create SendGrid?](https://docs.microsoft.com/en-us/azure/sendgrid-dotnet-how-to-send-email){:target="_blank"}
+- Email/SendGridAPIKey [how to create SendGrid?](https://docs.microsoft.com/en-us/azure/sendgrid-dotnet-how-to-send-email)
 
 ### Code-first database migration
 
@@ -61,7 +63,7 @@ Run `ASPNETCORE_Environment=Development dotnet run` to build project.
 
 ### WebAPI documentation
 
-Online API documentation is located on [/Swagger](http://ideashareapp.azurewebsites.net/swagger/){:target="_blank"}
+Online API documentation is located on [/Swagger](http://ideashareapp.azurewebsites.net/swagger/)
 
 ### Page navigation
 
