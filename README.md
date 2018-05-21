@@ -1,3 +1,5 @@
+![Mockup](Mockup.jpg)
+[Mockup source](https://www.anthonyboyd.graphics/mockups/2017/modern-iphone-x-macbook-pro-mockup-vol-2/)
 # IdeaShare Angular-WebAPI project
 
 This repository contains Web App built on Angular 5 that interacts with WebAPI which has MySQL database
